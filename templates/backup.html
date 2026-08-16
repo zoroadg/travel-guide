@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Хранение - Travel Guide</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f6fa; min-height: 100vh; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        .admin-header { background: #2c3e50; color: white; padding: 15px 30px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
+        .admin-title { display: flex; align-items: center; gap: 10px; }
+        .admin-status { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .btn-back { background: #3498db; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; transition: 0.3s; text-decoration: none; }
+        .btn-back:hover { background: #2980b9; }
+        .btn-logout { background: #e74c3c; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; transition: 0.3s; text-decoration: none; }
+        .btn-logout:hover { background: #c0392b; }
+        .admin-nav ul { display: flex; gap: 10px; list-style: none; padding: 10px; background: white; border-radius: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        .admin-nav ul li a { padding: 10px 20px; text-decoration: none; color: #333; border-radius: 5px; transition: 0.3s; }
+        .admin-nav ul li a.active { background: #667eea; color: white; }
+        .admin-nav ul li a:hover:not(.active) { background: #e0e0e0; }
+        .backup-content h2 { color: #2c3e50; margin-bottom: 20px; }
+        .backup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; }
+        .backup-card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .backup-card h3 { margin-bottom: 15px; color: #2c3e50; }
+        .backup-card p { color: #666; margin-bottom: 20px; line-height: 1.6; }
+        .btn-export, .btn-import { padding: 12px 24px; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: 0.3s; }
+        .btn-export { background: #3498db; color: white; }
+        .btn-export:hover { background: #2980b9; }
+        .btn-import { background: #2ecc71; color: white; }
+        .btn-import:hover { background: #27ae60; }
+        .file-upload { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+        .file-upload input[type="file"] { padding: 10px; border: 2px dashed #e0e0e0; border-radius: 8px; flex: 1; min-width: 200px; }
+        .file-upload input[type="file"]:hover { border-color: #667eea; }
+        .warning-msg { margin-top: 15px; padding: 10px; background: #fef3c7; border-radius: 5px; color: #d97706; display: flex; align-items: center; gap: 10px; }
+        .backup-info { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .backup-info h3 { color: #2c3e50; margin-bottom: 15px; }
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .info-item { display: flex; justify-content: space-between; padding: 12px; border-bottom: 1px solid #ecf0f1; }
+        .info-item .label { color: #7f8c8d; }
+        .info-item .value { font-weight: bold; color: #2c3e50; }
+        #statusMsg { margin-top: 15px; padding: 10px; border-radius: 5px; display: none; }
+        #statusMsg.success { display: block; background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        #statusMsg.error { display: block; background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        @media (max-width: 768px) {
+            .backup-grid { grid-template-columns: 1fr; }
+            .info-grid { grid-template-columns: 1fr; }
+            .admin-header { flex-direction: column; text-align: center; }
+            .file-upload { flex-direction: column; }
+        }
+        @media (max-width: 480px) {
+            .admin-status { justify-content: center; }
+            .btn-export, .btn-import { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="admin-header">
+            <div class="admin-title">
+                <span style="font-size:1.5rem;">🗡️</span>
+                <h1>Insult Panel</h1>
+            </div>
+            <div class="admin-status">
+                <a href="/dashboard" class="btn-back">← Назад</a>
+                <a href="/logout" class="btn-logout">🚪 Выйти</a>
+            </div>
+        </header>
+
+        <nav class="admin-nav">
+            <ul>
+                <li><a href="/dashboard">📊 Дашборд</a></li>
+                <li><a href="/users">👥 Пользователи</a></li>
+                <li><a href="/backup" class="active">💾 Хранение</a></li>
+            </ul>
+        </nav>
+
+        <main class="backup-content">
+            <h2>💾 Постоянное хранение данных</h2>
+
+            <div id="statusMsg"></div>
+
+            <div class="backup-grid">
+                <div class="backup-card">
+                    <h3>📥 Экспорт</h3>
+                    <p>Скачать полную базу данных в формате JSON</p>
+                    <button class="btn-export" onclick="exportData()">⬇️ Скачать базу</button>
+                </div>
+
+                <div class="backup-card">
+                    <h3>📤 Импорт</h3>
+                    <p>Восстановить базу из резервной копии</p>
+                    <div class="file-upload">
+                        <input type="file" id="fileInput" accept=".json">
+                        <button class="btn-import" onclick="importData()">📤 Загрузить</button>
+                    </div>
+                    <div class="warning-msg">⚠️ Все текущие данные будут заменены</div>
+                </div>
+            </div>
+
+            <section class="backup-info">
+                <h3>📋 Информация</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="label">👥 Всего пользователей:</span>
+                        <span class="value">{{ total_users }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">📝 Всего действий:</span>
+                        <span class="value">{{ total_actions }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">📊 Всего слов:</span>
+                        <span class="value">{{ total_words }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">🔄 Последнее обновление:</span>
+                        <span class="value">{{ last_update }}</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script>
+        function showStatus(message, type) {
+            const el = document.getElementById('statusMsg');
+            el.textContent = message;
+            el.className = type;
+            el.style.display = 'block';
+            setTimeout(() => {
+                el.style.display = 'none';
+            }, 5000);
+        }
+
+        function exportData() {
+            window.location.href = '/api/export';
+        }
+
+        async function importData() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                showStatus('❌ Выберите файл для импорта', 'error');
+                return;
+            }
+
+            try {
+                const text = await file.text();
+                const data = JSON.parse(text);
+                
+                const response = await fetch('/api/import', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showStatus(`✅ Импортировано ${result.users_imported} пользователей`, 'success');
+                    setTimeout(() => location.reload(), 2000);
+                } else {
+                    showStatus(`❌ Ошибка: ${result.error}`, 'error');
+                }
+            } catch (e) {
+                showStatus(`❌ Ошибка чтения файла: ${e.message}`, 'error');
+            }
+        }
+    </script>
+</body>
+</html>
