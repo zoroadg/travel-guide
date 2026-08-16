@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пользователи - Travel Guide</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f6fa; min-height: 100vh; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        .admin-header { background: #2c3e50; color: white; padding: 15px 30px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
+        .admin-title { display: flex; align-items: center; gap: 10px; }
+        .admin-status { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .btn-logout { background: #e74c3c; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; transition: 0.3s; text-decoration: none; }
+        .btn-logout:hover { background: #c0392b; }
+        .admin-nav ul { display: flex; gap: 10px; list-style: none; padding: 10px; background: white; border-radius: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        .admin-nav ul li a { padding: 10px 20px; text-decoration: none; color: #333; border-radius: 5px; transition: 0.3s; }
+        .admin-nav ul li a.active { background: #667eea; color: white; }
+        .admin-nav ul li a:hover:not(.active) { background: #e0e0e0; }
+        .users-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
+        .users-header h2 { color: #2c3e50; }
+        .users-header .count { background: #667eea; color: white; padding: 2px 10px; border-radius: 20px; font-size: 0.9rem; }
+        .users-filters { display: flex; gap: 15px; margin-bottom: 20px; flex-wrap: wrap; }
+        .search-input { flex: 1; padding: 10px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; min-width: 200px; }
+        .search-input:focus { outline: none; border-color: #667eea; }
+        .filter-select { padding: 10px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; background: white; cursor: pointer; }
+        .users-table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .users-table th { background: #34495e; color: white; padding: 12px; text-align: left; }
+        .users-table td { padding: 12px; border-bottom: 1px solid #
