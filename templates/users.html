@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пользователи - Travel Guide</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f6fa; min-height: 100vh; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        .admin-header { background: #2c3e50; color: white; padding: 15px 30px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
+        .admin-title { display: flex; align-items: center; gap: 10px; }
+        .admin-status { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .btn-logout { background: #e74c3c; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; transition: 0.3s; text-decoration: none; }
+        .btn-logout:hover { background: #c0392b; }
+        .admin-nav ul { display: flex; gap: 10px; list-style: none; padding: 10px; background: white; border-radius: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        .admin-nav ul li a { padding: 10px 20px; text-decoration: none; color: #333; border-radius: 5px; transition: 0.3s; }
+        .admin-nav ul li a.active { background: #667eea; color: white; }
+        .admin-nav ul li a:hover:not(.active) { background: #e0e0e0; }
+        .users-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
+        .users-header h2 { color: #2c3e50; }
+        .users-header .count { background: #667eea; color: white; padding: 2px 10px; border-radius: 20px; font-size: 0.9rem; }
+        .users-filters { display: flex; gap: 15px; margin-bottom: 20px; flex-wrap: wrap; }
+        .search-input { flex: 1; padding: 10px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; min-width: 200px; }
+        .search-input:focus { outline: none; border-color: #667eea; }
+        .filter-select { padding: 10px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; background: white; cursor: pointer; }
+        .users-table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .users-table th { background: #34495e; color: white; padding: 12px; text-align: left; }
+        .users-table td { padding: 12px; border-bottom: 1px solid #ecf0f1; }
+        .users-table tr:hover { background: #f8f9fa; }
+        .users-table .actions { display: flex; gap: 5px; }
+        .users-table .actions button { background: none; border: none; cursor: pointer; font-size: 1.1rem; padding: 2px 4px; }
+        .pagination { display: flex; justify-content: center; align-items: center; gap: 20px; margin-top: 20px; }
+        .page-btn { padding: 8px 16px; border: 1px solid #e0e0e0; background: white; border-radius: 5px; cursor: pointer; transition: 0.3s; }
+        .page-btn:hover { background: #667eea; color: white; border-color: #667eea; }
+        .page-info { font-weight: bold; color: #2c3e50; }
+        .user-link { color: #667eea; text-decoration: none; }
+        .user-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .admin-header { flex-direction: column; text-align: center; }
+            .users-filters { flex-direction: column; }
+            .search-input { min-width: unset; }
+            .users-table { font-size: 0.9rem; }
+            .users-table th, .users-table td { padding: 8px; }
+        }
+        @media (max-width: 480px) {
+            .users-table { font-size: 0.8rem; }
+            .users-table th, .users-table td { padding: 6px; }
+            .admin-status { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="admin-header">
+            <div class="admin-title">
+                <span style="font-size:1.5rem;">🗡️</span>
+                <h1>Insult Panel</h1>
+            </div>
+            <div class="admin-status">
+                <a href="/logout" class="btn-logout">🚪 Выйти</a>
+            </div>
+        </header>
+
+        <nav class="admin-nav">
+            <ul>
+                <li><a href="/dashboard">📊 Дашборд</a></li>
+                <li><a href="/users" class="active">👥 Пользователи</a></li>
+                <li><a href="/backup">💾 Хранение</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <div class="users-header">
+                <h2>👥 Все пользователи <span class="count">[{{ total }}]</span></h2>
+            </div>
+
+            <form class="users-filters" method="GET">
+                <input type="text" name="search" class="search-input" placeholder="🔍 Поиск..." value="{{ search }}">
+                <select name="status" class="filter-select">
+                    <option value="all" {% if status_filter == 'all' or not status_filter %}selected{% endif %}>Статус: Все</option>
+                    <option value="active" {% if status_filter == 'active' %}selected{% endif %}>Активные</option>
+                    <option value="banned" {% if status_filter == 'banned' %}selected{% endif %}>Заблокированные</option>
+                </select>
+                <select name="sort" class="filter-select">
+                    <option value="generations" {% if sort_by == 'generations' %}selected{% endif %}>Сортировка: По ген. ↓</option>
+                    <option value="words" {% if sort_by == 'words' %}selected{% endif %}>Сортировка: По словам ↓</option>
+                </select>
+                <button type="submit" style="padding:10px 20px;background:#667eea;color:white;border:none;border-radius:8px;cursor:pointer;">Применить</button>
+            </form>
+
+            <table class="users-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Пользователь</th>
+                        <th>ID</th>
+                        <th>Телефон</th>
+                        <th>IP</th>
+                        <th>Генерац</th>
+                        <th>Действ.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ loop.index + (page - 1) * per_page }}</td>
+                        <td><a href="/user/{{ user.user_id }}" class="user-link">👤 @{{ user.username }}</a></td>
+                        <td>{{ user.user_id }}</td>
+                        <td>{{ user.phone or '-' }}</td>
+                        <td>{{ user.ip_address or '-' }}</td>
+                        <td>{{ user.total_generations }}</td>
+                        <td class="actions">
+                            <a href="/user/{{ user.user_id }}" title="Просмотр">👁️</a>
+                            <button title="Предупреждение">⚠️</button>
+                            <button title="Блокировка">🚫</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="pagination">
+                <a href="{{ url_for('users', page=page-1, search=search, status=status_filter, sort=sort_by) if page > 1 else '#' }}" class="page-btn">◀</a>
+                <span class="page-info">{{ page }} / {{ ((total - 1) // per_page) + 1 if total > 0 else 1 }}</span>
+                <a href="{{ url_for('users', page=page+1, search=search, status=status_filter, sort=sort_by) if page < ((total - 1) // per_page) else '#' }}" class="page-btn">▶</a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
