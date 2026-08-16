@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Travel Guide</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; background: rgba(255,255,255,0.95); min-height: 100vh; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 2px solid #e0e0e0; flex-wrap: wrap; }
+        nav ul { display: flex; list-style: none; gap: 20px; flex-wrap: wrap; }
+        nav ul li a { text-decoration: none; color: #333; font-weight: 500; padding: 8px 16px; border-radius: 8px; transition: 0.3s; }
+        nav ul li a:hover { background: #667eea; color: white; }
+        nav ul li a.active { background: #667eea; color: white; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 40px 0; }
+        .contact-info h1 { font-size: 2.5rem; color: #333; margin-bottom: 20px; }
+        .contact-info p { font-size: 1.1rem; color: #444; line-height: 1.8; margin-bottom: 20px; }
+        .contact-details { margin-top: 30px; }
+        .contact-item { display: flex; align-items: center; gap: 15px; padding: 15px 0; border-bottom: 1px solid #e0e0e0; }
+        .contact-item .icon { font-size: 1.5rem; width: 40px; }
+        .contact-item .info { font-size: 1rem; color: #333; }
+        .contact-form { background: #f8f9fa; padding: 30px; border-radius: 15px; }
+        .contact-form h3 { margin-bottom: 20px; color: #333; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 500; color: #333; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; transition: 0.3s; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #667eea; }
+        .form-group textarea { min-height: 120px; resize: vertical; }
+        .btn-submit { padding: 12px 30px; background: #667eea; color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: 0.3s; }
+        .btn-submit:hover { background: #5a67d8; }
+        footer { text-align: center; padding: 20px; color: #666; border-top: 2px solid #e0e0e0; margin-top: 20px; }
+        @media (max-width: 768px) {
+            .contact-grid { grid-template-columns: 1fr; }
+            header { flex-direction: column; gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🗺️ Travel Guide</h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Главная</a></li>
+                    <li><a href="/destinations">Направления</a></li>
+                    <li><a href="/about">О нас</a></li>
+                    <li><a href="/contact" class="active">Контакты</a></li>
+                    <li><a href="/login" class="btn-login">Вход</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h1>📞 Свяжитесь с нами</h1>
+                    <p>Мы всегда рады помочь вам с планированием путешествий. Оставьте заявку или свяжитесь с нами любым удобным способом.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="icon">📍</span>
+                            <span class="info">Москва, ул. Тверская, 15</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="icon">📞</span>
+                            <span class="info">+7 (923) 428-32-23</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="icon">📧</span>
+                            <span class="info">info@travel-guide.ru</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="icon">🕐</span>
+                            <span class="info">Пн-Пт: 9:00 - 20:00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>📝 Напишите нам</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Имя</label>
+                            <input type="text" id="name" placeholder="Ваше имя">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Ваш email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Сообщение</label>
+                            <textarea id="message" placeholder="Ваше сообщение"></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>© 2026 Travel Guide. Все права защищены.</p>
+        </footer>
+    </div>
+</body>
+</html>
