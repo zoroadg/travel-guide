@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход - Travel Guide</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; display: flex; justify-content: center; align-items: center; }
+        .container { width: 100%; padding: 20px; }
+        .login-box { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); width: 400px; max-width: 100%; margin: 0 auto; }
+        .login-box h2 { text-align: center; margin-bottom: 10px; color: #333; }
+        .login-subtitle { text-align: center; color: #7f8c8d; margin-bottom: 30px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 500; color: #333; }
+        .form-group input { width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; transition: 0.3s; }
+        .form-group input:focus { outline: none; border-color: #667eea; }
+        .btn-login { width: 100%; padding: 12px; background: #667eea; color: white; border: none; border-radius: 8px; font-size: 1.1rem; cursor: pointer; transition: 0.3s; }
+        .btn-login:hover { background: #5a67d8; }
+        .back-link { display: block; text-align: center; margin-top: 20px; color: #667eea; text-decoration: none; }
+        .back-link:hover { text-decoration: underline; }
+        .error-msg { background: #fee; color: #c0392b; padding: 10px; border-radius: 8px; margin-bottom: 20px; text-align: center; }
+        @media (max-width: 480px) {
+            .login-box { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <h2>🔐 Вход в личный кабинет</h2>
+            <p class="login-subtitle">Введите данные для доступа к панели</p>
+            {% if error %}
+            <div class="error-msg">{{ error }}</div>
+            {% endif %}
+            <form method="POST" action="/dashboard">
+                <div class="form-group">
+                    <label for="username">Имя пользователя</label>
+                    <input type="text" id="username" name="username" placeholder="admin" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••••" required>
+                </div>
+                <button type="submit" class="btn-login">Войти</button>
+            </form>
+            <a href="/" class="back-link">← Вернуться на главную</a>
+        </div>
+    </div>
+</body>
+</html>
