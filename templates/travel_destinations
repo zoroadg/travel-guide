@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Направления - Travel Guide</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; background: rgba(255,255,255,0.95); min-height: 100vh; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 2px solid #e0e0e0; flex-wrap: wrap; }
+        nav ul { display: flex; list-style: none; gap: 20px; flex-wrap: wrap; }
+        nav ul li a { text-decoration: none; color: #333; font-weight: 500; padding: 8px 16px; border-radius: 8px; transition: 0.3s; }
+        nav ul li a:hover { background: #667eea; color: white; }
+        nav ul li a.active { background: #667eea; color: white; }
+        .page-title { text-align: center; padding: 40px 0; }
+        .page-title h1 { font-size: 2.5rem; color: #333; }
+        .page-title p { color: #666; font-size: 1.1rem; }
+        .destinations-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; padding: 20px 0 40px; }
+        .dest-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .dest-card:hover { transform: translateY(-5px); }
+        .dest-card .card-image { height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem; }
+        .dest-card .card-content { padding: 20px; }
+        .dest-card .card-content h3 { margin-bottom: 10px; color: #333; }
+        .dest-card .card-content p { color: #666; line-height: 1.6; }
+        footer { text-align: center; padding: 20px; color: #666; border-top: 2px solid #e0e0e0; margin-top: 20px; }
+        @media (max-width: 768px) {
+            .destinations-grid { grid-template-columns: 1fr 1fr; }
+            header { flex-direction: column; gap: 15px; }
+        }
+        @media (max-width: 480px) {
+            .destinations-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🗺️ Travel Guide</h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Главная</a></li>
+                    <li><a href="/destinations" class="active">Направления</a></li>
+                    <li><a href="/about">О нас</a></li>
+                    <li><a href="/contact">Контакты</a></li>
+                    <li><a href="/login" class="btn-login">Вход</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <div class="page-title">
+                <h1>🌍 Наши направления</h1>
+                <p>Выбери идеальное путешествие для себя</p>
+            </div>
+            <div class="destinations-grid">
+                <div class="dest-card">
+                    <div class="card-image">🏰</div>
+                    <div class="card-content">
+                        <h3>Европа</h3>
+                        <p>Путешествие по старинным городам, знакомство с культурой и кухней разных стран</p>
+                    </div>
+                </div>
+                <div class="dest-card">
+                    <div class="card-image">🏮</div>
+                    <div class="card-content">
+                        <h3>Азия</h3>
+                        <p>Экзотические страны, древние храмы, восточные традиции и вкусная еда</p>
+                    </div>
+                </div>
+                <div class="dest-card">
+                    <div class="card-image">🏝️</div>
+                    <div class="card-content">
+                        <h3>Острова</h3>
+                        <p>Райские пляжи, кристально чистая вода и незабываемый отдых</p>
+                    </div>
+                </div>
+                <div class="dest-card">
+                    <div class="card-image">⛰️</div>
+                    <div class="card-content">
+                        <h3>Приключения</h3>
+                        <p>Горные походы, экстремальные виды спорта и активный отдых</p>
+                    </div>
+                </div>
+                <div class="dest-card">
+                    <div class="card-image">📷</div>
+                    <div class="card-content">
+                        <h3>Фото-туры</h3>
+                        <p>Путешествия для фотографов, лучшие места для съемки</p>
+                    </div>
+                </div>
+                <div class="dest-card">
+                    <div class="card-image">💼</div>
+                    <div class="card-content">
+                        <h3>Бизнес-туры</h3>
+                        <p>Комфортабельные поездки для деловых встреч и конференций</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>© 2026 Travel Guide. Все права защищены.</p>
+        </footer>
+    </div>
+</body>
+</html>
