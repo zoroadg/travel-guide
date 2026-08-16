@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>be1.ru</title>
+</head>
+<body>
+<p>&lt;!DOCTYPE html&gt;<br />
+&lt;html lang=&quot;ru&quot;&gt;<br />
+&lt;head&gt;<br />
+&nbsp; &nbsp; &lt;meta charset=&quot;UTF-8&quot;&gt;<br />
+&nbsp; &nbsp; &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;<br />
+&nbsp; &nbsp; &lt;title&gt;Контакты - Travel Guide&lt;/title&gt;<br />
+&nbsp; &nbsp; &lt;style&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; * { margin: 0; padding: 0; box-sizing: border-box; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; body { font-family: &#39;Segoe UI&#39;, Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .container { max-width: 1200px; margin: 0 auto; padding: 20px; background: rgba(255,255,255,0.95); min-height: 100vh; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; header { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 2px solid #e0e0e0; flex-wrap: wrap; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; nav ul { display: flex; list-style: none; gap: 20px; flex-wrap: wrap; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; nav ul li a { text-decoration: none; color: #333; font-weight: 500; padding: 8px 16px; border-radius: 8px; transition: 0.3s; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; nav ul li a:hover { background: #667eea; color: white; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; nav ul li a.active { background: #667eea; color: white; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 40px 0; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .contact-info h1 { font-size: 2.5rem; color: #333; margin-bottom: 20px; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .contact-info p { font-size: 1.1rem; color: #444; line-height: 1.8; margin-bottom: 20px; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .contact-details { margin-top: 30px; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .contact-item { display: flex; align-items: center; gap: 15px; padding: 15px 0; border-bottom: 1px solid #e0e0e0; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .contact-item .icon { font-size: 1.5rem; width: 40px; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .contact-item .info { font-size: 1rem; color: #333; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .contact-form { background: #f8f9fa; padding: 30px; border-radius: 15px; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .contact-form h3 { margin-bottom: 20px; color: #333; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .form-group { margin-bottom: 15px; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .form-group label { display: block; margin-bottom: 5px; font-weight: 500; color: #333; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; transition: 0.3s; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #667eea; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .form-group textarea { min-height: 120px; resize: vertical; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .btn-submit { padding: 12px 30px; background: #667eea; color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: 0.3s; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .btn-submit:hover { background: #5a67d8; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; footer { text-align: center; padding: 20px; color: #666; border-top: 2px solid #e0e0e0; margin-top: 20px; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; @media (max-width: 768px) {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .contact-grid { grid-template-columns: 1fr; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; header { flex-direction: column; gap: 15px; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &lt;/style&gt;<br />
+&lt;/head&gt;<br />
+&lt;body&gt;<br />
+&nbsp; &nbsp; &lt;div class=&quot;container&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;header&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;h1&gt;🗺️ Travel Guide&lt;/h1&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;nav&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;ul&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;li&gt;&lt;a href=&quot;/&quot;&gt;Главная&lt;/a&gt;&lt;/li&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;li&gt;&lt;a href=&quot;/destinations&quot;&gt;Направления&lt;/a&gt;&lt;/li&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;li&gt;&lt;a href=&quot;/about&quot;&gt;О нас&lt;/a&gt;&lt;/li&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;li&gt;&lt;a href=&quot;/contact&quot; class=&quot;active&quot;&gt;Контакты&lt;/a&gt;&lt;/li&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;li&gt;&lt;a href=&quot;/login&quot; class=&quot;btn-login&quot;&gt;Вход&lt;/a&gt;&lt;/li&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/ul&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/nav&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;/header&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;main&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;contact-grid&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;contact-info&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;h1&gt;📞 Свяжитесь с нами&lt;/h1&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;p&gt;Мы всегда рады помочь вам с планированием путешествий. Оставьте заявку или свяжитесь с нами любым удобным способом.&lt;/p&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;contact-details&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;contact-item&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;span class=&quot;icon&quot;&gt;📍&lt;/span&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;span class=&quot;info&quot;&gt;Москва, ул. Тверская, 15&lt;/span&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;contact-item&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;span class=&quot;icon&quot;&gt;📞&lt;/span&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;span class=&quot;info&quot;&gt;+7 (923) 428-32-23&lt;/span&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;contact-item&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;span class=&quot;icon&quot;&gt;📧&lt;/span&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;span class=&quot;info&quot;&gt;info@travel-guide.ru&lt;/span&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;contact-item&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;span class=&quot;icon&quot;&gt;🕐&lt;/span&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;span class=&quot;info&quot;&gt;Пн-Пт: 9:00 - 20:00&lt;/span&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;contact-form&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;h3&gt;📝 Напишите нам&lt;/h3&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;form&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;form-group&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;label for=&quot;name&quot;&gt;Имя&lt;/label&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;input type=&quot;text&quot; id=&quot;name&quot; placeholder=&quot;Ваше имя&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;form-group&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;input type=&quot;email&quot; id=&quot;email&quot; placeholder=&quot;Ваш email&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;form-group&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;label for=&quot;message&quot;&gt;Сообщение&lt;/label&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;textarea id=&quot;message&quot; placeholder=&quot;Ваше сообщение&quot;&gt;&lt;/textarea&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;button type=&quot;submit&quot; class=&quot;btn-submit&quot;&gt;Отправить&lt;/button&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/form&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;/main&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;footer&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;p&gt;&copy; 2026 Travel Guide. Все права защищены.&lt;/p&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;/footer&gt;<br />
+&nbsp; &nbsp; &lt;/div&gt;<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;</p>
+</body>
+</html>

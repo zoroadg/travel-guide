@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>be1.ru</title>
+</head>
+<body>
+<p>&lt;!DOCTYPE html&gt;<br />
+&lt;html lang=&quot;ru&quot;&gt;<br />
+&lt;head&gt;<br />
+&nbsp; &nbsp; &lt;meta charset=&quot;UTF-8&quot;&gt;<br />
+&nbsp; &nbsp; &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;<br />
+&nbsp; &nbsp; &lt;title&gt;Панель управления - Travel Guide&lt;/title&gt;<br />
+&nbsp; &nbsp; &lt;style&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; * { margin: 0; padding: 0; box-sizing: border-box; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; body { font-family: &#39;Segoe UI&#39;, Tahoma, Geneva, Verdana, sans-serif; background: #f5f6fa; min-height: 100vh; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .container { max-width: 1400px; margin: 0 auto; padding: 20px; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .admin-header { background: #2c3e50; color: white; padding: 15px 30px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .admin-title { display: flex; align-items: center; gap: 10px; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .admin-status { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .status-online { color: #2ecc71; font-weight: bold; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .btn-logout { background: #e74c3c; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; transition: 0.3s; text-decoration: none; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .btn-logout:hover { background: #c0392b; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .admin-nav ul { display: flex; gap: 10px; list-style: none; padding: 10px; background: white; border-radius: 10px; margin-bottom: 20px; flex-wrap: wrap; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .admin-nav ul li a { padding: 10px 20px; text-decoration: none; color: #333; border-radius: 5px; transition: 0.3s; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .admin-nav ul li a.active { background: #667eea; color: white; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .admin-nav ul li a:hover:not(.active) { background: #e0e0e0; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .stats-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 15px; margin-bottom: 30px; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .stat-card { background: white; padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .stat-icon { font-size: 2rem; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .stat-number { font-size: 2rem; font-weight: bold; color: #2c3e50; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .stat-label { color: #7f8c8d; font-size: 0.9rem; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .activity-section, .top-users-section { background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .activity-section h3, .top-users-section h3 { margin-bottom: 15px; color: #2c3e50; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .activity-chart { display: flex; justify-content: space-around; align-items: flex-end; height: 200px; padding: 20px; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .chart-bar { display: flex; flex-direction: column; align-items: center; gap: 5px; flex: 1; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .bar { width: 30px; background: #667eea; border-radius: 5px 5px 0 0; min-height: 10px; transition: height 0.5s; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .chart-bar .value { font-weight: bold; color: #2c3e50; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .top-users-table { width: 100%; border-collapse: collapse; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .top-users-table th { background: #34495e; color: white; padding: 12px; text-align: left; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .top-users-table td { padding: 12px; border-bottom: 1px solid #ecf0f1; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .top-users-table tr:hover { background: #f8f9fa; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .time { color: #2ecc71; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; @media (max-width: 768px) {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .stats-grid { grid-template-columns: repeat(3, 1fr); }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .activity-chart { height: 150px; padding: 10px; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .bar { width: 20px; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; @media (max-width: 480px) {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .stats-grid { grid-template-columns: repeat(2, 1fr); }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .admin-header { flex-direction: column; text-align: center; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .admin-status { justify-content: center; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &lt;/style&gt;<br />
+&lt;/head&gt;<br />
+&lt;body&gt;<br />
+&nbsp; &nbsp; &lt;div class=&quot;container&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;header class=&quot;admin-header&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;admin-title&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;span style=&quot;font-size:1.5rem;&quot;&gt;🗡️&lt;/span&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;h1&gt;Insult Panel&lt;/h1&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;admin-status&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;span class=&quot;status-online&quot;&gt;🟢 Онлайн&lt;/span&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;span class=&quot;time&quot; id=&quot;currentTime&quot;&gt;{{ now.strftime(&#39;%H:%M:%S&#39;) if now else &#39;&#39; }}&lt;/span&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;a href=&quot;/logout&quot; class=&quot;btn-logout&quot;&gt;🚪 Выйти&lt;/a&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;/header&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &lt;nav class=&quot;admin-nav&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;ul&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;li&gt;&lt;a href=&quot;/dashboard&quot; class=&quot;active&quot;&gt;📊 Дашборд&lt;/a&gt;&lt;/li&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;li&gt;&lt;a href=&quot;/users&quot;&gt;👥 Пользователи&lt;/a&gt;&lt;/li&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;li&gt;&lt;a href=&quot;/backup&quot;&gt;💾 Хранение&lt;/a&gt;&lt;/li&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/ul&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;/nav&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &lt;main&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;stats-grid&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;stat-card&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;stat-icon&quot;&gt;👥&lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;stat-number&quot;&gt;{{ total_users }}&lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;stat-label&quot;&gt;Всего&lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;stat-card&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;stat-icon&quot;&gt;✅&lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;stat-number&quot;&gt;{{ active_users }}&lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;stat-label&quot;&gt;Активных&lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;stat-card&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;stat-icon&quot;&gt;🚫&lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;stat-number&quot;&gt;{{ banned_users }}&lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;stat-label&quot;&gt;Забанено&lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;stat-card&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;stat-icon&quot;&gt;📝&lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;stat-number&quot;&gt;{{ total_generations }}&lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;stat-label&quot;&gt;Генераций&lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;stat-card&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;stat-icon&quot;&gt;📊&lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;stat-number&quot;&gt;{{ total_words }}&lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;stat-label&quot;&gt;Слов&lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;stat-card&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;stat-icon&quot;&gt;📈&lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;stat-number&quot;&gt;{{ today_actions }}&lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;stat-label&quot;&gt;За сегодня&lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;section class=&quot;activity-section&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;h3&gt;📈 Активность за неделю&lt;/h3&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;activity-chart&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {% for day in week_stats %}<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;chart-bar&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;bar&quot; style=&quot;height: {{ day.count * 15 if day.count &gt; 0 else 10 }}px;&quot;&gt;&lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;span&gt;{{ day.day }}&lt;/span&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;span class=&quot;value&quot;&gt;{{ day.count }}&lt;/span&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {% endfor %}<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/section&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;section class=&quot;top-users-section&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;h3&gt;🏆 Топ пользователей&lt;/h3&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;table class=&quot;top-users-table&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;thead&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;tr&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;th&gt;#&lt;/th&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;th&gt;Пользователь&lt;/th&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;th&gt;Генераций&lt;/th&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;th&gt;Слов&lt;/th&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/tr&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/thead&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;tbody&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {% for user in top_users %}<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;tr&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;td&gt;{{ loop.index }}&lt;/td&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;td&gt;@{{ user.username }}&lt;/td&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;td&gt;{{ user.total_generations }}&lt;/td&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;td&gt;{{ user.total_words }}&lt;/td&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/tr&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {% endfor %}<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/tbody&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/table&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/section&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;/main&gt;<br />
+&nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &lt;script&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; function updateTime() {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; const now = new Date();<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(&#39;currentTime&#39;).textContent = now.toTimeString().slice(0,8);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; setInterval(updateTime, 1000);<br />
+&nbsp; &nbsp; &lt;/script&gt;<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;</p>
+</body>
+</html>
